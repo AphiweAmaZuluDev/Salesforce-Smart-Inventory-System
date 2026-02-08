@@ -1,0 +1,37 @@
+Plan out the data model for the following solution in a salesforce org: 
+
+Business Problem: A retail company is losing money due to stockouts and slow re-ordering processes. They need a system to visualize inventory and automatically generate purchase orders for suppliers. ROI: Prevents revenue loss from empty shelves and reduces manual administrative time by 40%.
+
+The Tech Stack Implementation
+LWC (The Modern Interface): Build a "Product Gallery" component.
+
+Function: Displays products in a grid with images, current stock levels, and a "Restock" button.
+
+PD1 Skill: Use @wire to fetch data and Imperative Apex to handle the "Restock" button click. Learn to use the Lightning Data Service (LDS) to update records without Apex where possible.
+
+Aura (The Wrapper/Utility): Create a "Quick Adjust" Utility Bar component.
+
+Function: A widget always visible at the bottom of the screen allowing warehouse staff to scan a barcode (simulate by typing a text ID) and increment/decrement stock.
+
+PD1 Skill: Learn Application Events in Aura to communicate updates to other parts of the page.
+
+Visualforce (The Legacy Requirement): Create a "Purchase Order" Generator.
+
+Function: A page that takes a list of products needed and renders them as a clean, printable PDF invoice using renderAs="pdf".
+
+PD1 Skill: Standard Controllers and Controller Extensions.
+
+Backend Logic
+Apex Trigger: Prevent stock from going below zero.
+
+Batch Apex: Run a nightly job that identifies all products below the "Minimum Level" and creates a "Purchase Order" record automatically.
+
+
+
+--------------
+
+
+Personal changes made to objects:
+- Changed name of Purchase Order object to AutoNumber PO-{0000}.
+- Made the Order date field of the Purchase order object a Date/Time field instead of just a Date field.
+- Set the default value of the Current Stock field of the Product object to 0
