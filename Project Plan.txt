@@ -31,7 +31,13 @@ Batch Apex: Run a nightly job that identifies all products below the "Minimum Le
 --------------
 
 
-Personal changes made to objects:
+Notes:
 - Changed name of Purchase Order object to AutoNumber PO-{0000}.
 - Made the Order date field of the Purchase order object a Date/Time field instead of just a Date field.
-- Set the default value of the Current Stock field of the Product object to 0
+- Set the default value of the Current Stock field of the Product object to 0.
+- Created a prompt template called Barcode Generator that generates an automatic barcode for each product that is being created. 
+- Created 13 dummy products and used Data Loader to insert them from a csv file. 
+- Used static resource in order to store the images for the products and referenced the static resources in the Product_Image__c URL field.
+- Created a validation Trigger on Product2 object prevents the value of Current_Stock__c going below 0. Used a Trigger Handler. 
+- Wrote a basic unit test and also used a TestDataFactory to set up my test data. 
+- Created an App called Smart Inventory System which will host lightning components.

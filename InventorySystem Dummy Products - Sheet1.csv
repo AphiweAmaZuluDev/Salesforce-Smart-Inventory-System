@@ -1,0 +1,13 @@
+Name,IsActive,Primary_Supplier__c,Product_Image__c
+Burgundy Formal Shirt,TRUE,001dL00001sXyPBQA0,/resource/Shirts/shirts/Formal-Shirt-(burgundy).png
+Green Formal Shirt,TRUE,001dL00001sXyPBQA0,/resource/Shirts/shirts/Formal-Shirt-(green).png
+Patent Black Oxford Shoes,TRUE,001dL00001sXygvQAC,/resource/Shoes/shoes/Formal-Shoe-(blackpatent-oxford).png
+Blue Oxford Shoes,TRUE,001dL00001sXygvQAC,/resource/Shoes/shoes/Formal-Shoe-(blue-oxford).png
+Brown Oxford Shoe,TRUE,001dL00001sXygvQAC,/resource/Shoes/shoes/Formal-Shoe-(brown-oxford).png
+Brown Socks,TRUE,001dL00001sXyU1QAK,/resource/Socks/socks/Formal-Socks-(brown).png
+Green Socks,TRUE,001dL00001sXyU1QAK,/resource/Socks/socks/Formal-Socks-(green).png
+Blue Suit,TRUE,001dL00001sXyiXQAS,/resource/Suits/suits/Formal-Suit-(blue).png
+Grey Suit,TRUE,001dL00001sXyiXQAS,/resource/Suits/suits/Formal-Suit-(grey).png
+Green Silk Tie,TRUE,001dL00001sXJ4KQAW,/resource/Ties/ties/Formal-Tie-(green-silk).png
+Maroon Silk Tie,TRUE,001dL00001sXJ4KQAW,/resource/Ties/ties/Formal-Tie-(maroon-silk).png
+Navy Silk Tie,TRUE,001dL00001sXJ4KQAW,/resource/Ties/ties/Formal-Tie-(navy-silk).png

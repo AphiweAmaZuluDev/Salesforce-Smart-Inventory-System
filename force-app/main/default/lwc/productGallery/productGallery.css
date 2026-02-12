@@ -1,5 +1,4 @@
 .gridContainer{
-    background-color: #D9D9D9;
-    padding: 1rem 4rem;
-
+    slds-c-card-color-border: red;
+    slds-c-card-sizing-border: 2px;
 }
