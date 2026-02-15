@@ -13,5 +13,8 @@ public with sharing class ProductController {
         }
     }
 
+    public static Purchase_Order__c createSinglePO(Product2 productId) {
+        
+    }
     
 }
