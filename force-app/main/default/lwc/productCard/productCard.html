@@ -19,7 +19,9 @@
             <p class="TextBox"><strong>Supplier:</strong> {productSupplier}</p>
             <p class="TextBox"><strong>Unit Cost:</strong> R{productCostPrice}</p>
             <p class="TextBox"><strong>Current Stock Level:</strong> {productStockLevel}</p>
-            <lightning-button variant="brand" label="Restock" class="RestockBtn" data-id="restock"></lightning-button>
+            <span class="RestockBtnContainer">
+                <lightning-button variant="brand" label="Restock" class="RestockBtn" data-id="restock"></lightning-button>
+            </span>
         </div>
         <!-- <div>
             <p class="slds-text-heading_small">Name: {productName}</p>

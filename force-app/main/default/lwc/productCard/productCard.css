@@ -42,3 +42,8 @@
     margin-top: 0.2rem;
     padding-left: 1rem;
 }
+
+.RestockBtnContainer {
+    display: flex;
+    justify-content: flex-end;
+}
