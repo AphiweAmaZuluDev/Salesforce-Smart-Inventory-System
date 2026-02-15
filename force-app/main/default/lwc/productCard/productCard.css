@@ -1,7 +1,41 @@
 .OuterContainer {
-    height: 22rem;
+    height: fit-content;
     width: 100%;
     padding: 2rem;
     border-radius: 2rem;
     box-shadow: 0 0 12px 0.25px lightgrey;
+}
+
+.Image {
+    border-radius: 2rem;
+    height: 18rem;
+    cursor: pointer;
+}
+
+.DescriptionContainer {
+    margin-top: 1rem;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Description {
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.ExpandedDescription {
+    margin-top: 1rem;
+    padding-left: 1rem;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.ExpandBtn {
+    margin-left: 1rem;
 }

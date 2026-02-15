@@ -1,4 +1,4 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 
 export default class ProductCard extends LightningElement {
     @api productName
@@ -8,4 +8,11 @@ export default class ProductCard extends LightningElement {
     @api productSupplier
     @api productImage
     @api productCategory
+
+    @track expanded = false
+    descriptionContainer = this.template.querySelector('[data-id="description"]')
+
+    expandDescription() {
+        this.expanded = this.expanded == false ? true : false
+    }
 }
