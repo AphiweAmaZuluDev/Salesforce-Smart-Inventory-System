@@ -41,3 +41,8 @@ Notes:
 - Created a validation Trigger on Product2 object prevents the value of Current_Stock__c going below 0. Used a Trigger Handler. 
 - Wrote a basic unit test and also used a TestDataFactory to set up my test data. 
 - Created an App called Smart Inventory System which will host lightning components.
+- Changed Org currency to ZAR.
+- 
+
+-------------
+Git commit: 
