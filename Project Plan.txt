@@ -46,4 +46,4 @@ Notes:
 - 
 
 -------------
-Git commit: 
+Git commit: Imported createSinglePO function in productCard.js. Passed product ID to productCard component. 

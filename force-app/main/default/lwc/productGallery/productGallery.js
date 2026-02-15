@@ -1,10 +1,12 @@
 import { LightningElement, wire, track } from 'lwc';
 import retrieveProducts from '@salesforce/apex/ProductController.retrieveProducts';
+import {refreshApex} from '@salesforce/apex';
 
 export default class ProductGallery extends LightningElement {
     @track products = []
     error
 
+    // Get the products from the apex controller
     @wire(retrieveProducts)
     wiredProducts({error, data}) {
         if(data) {
@@ -20,6 +22,11 @@ export default class ProductGallery extends LightningElement {
             this.products = undefined
             console.log(this.error)
         }
+    }
+
+    // refresh the component once values are changed due to restock.
+    handleResfreshRequest() {
+        return refreshApex(this.products)
     }
 
 }

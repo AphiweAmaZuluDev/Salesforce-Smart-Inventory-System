@@ -27,18 +27,21 @@ public with sharing class ProductController {
 
         // Create the Purchase Order & Line Items.
         try {
+            // Query current product.
             Product2 product = [SELECT Id, Name, Primary_Supplier__c, Cost_Price__c FROM Product2 Where Id = :productId LIMIT 1];
 
             if(product.Primary_Supplier__c == null) {
                 throw new AuraHandledException('This product does not have a primary supplier hence the purchase order cannot be made. Please go to the product record and select a supplier for this product.');
             }
 
+            // Create Purchase order Record.
             Purchase_Order__c po = new Purchase_Order__c(
                 Supplier__c = product.Primary_Supplier__c,
                 Status__c = 'Draft'
             );
             insert po;
 
+            // Create Purchase Order Line Item Record.
             Purchase_Order_Line_Item__c lineItem = new Purchase_Order_Line_Item__c(
                 Purchase_Order__c = po.Id,
                 Product__c = product.Id,
@@ -46,6 +49,7 @@ public with sharing class ProductController {
                 Unit_Cost__c = product.Cost_Price__c
             );
             insert lineItem;
+            
         } catch (DmlException e) {
             throw new AuraHandledException('The following error occured while creating the Purchase Order:' + e.getMessage());            
         } catch (Exception e) {

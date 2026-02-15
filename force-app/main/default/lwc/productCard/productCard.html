@@ -21,7 +21,7 @@
             <p class="TextBox"><strong>Current Stock Level:</strong> {productStockLevel} units</p>
             <p class="TextBox"><strong>Minimum Stock Level:</strong> {productMinimumStockLevel} units</p>
             <span class="RestockBtnContainer">
-                <lightning-button variant="brand" label="Restock" class="RestockBtn" data-id="restock"></lightning-button>
+                <lightning-button variant="brand" label="Restock" class="RestockBtn" data-id="restock" onclick={handleRestock}></lightning-button>
             </span>
         </div>
     </lightning-card>
