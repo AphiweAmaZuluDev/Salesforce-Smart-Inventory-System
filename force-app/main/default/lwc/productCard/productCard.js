@@ -11,7 +11,6 @@ export default class ProductCard extends LightningElement {
     @api productMinimumStockLevel
 
     @track expanded = false
-    descriptionContainer = this.template.querySelector('[data-id="description"]')
 
     expandDescription() {
         this.expanded = this.expanded == false ? true : false

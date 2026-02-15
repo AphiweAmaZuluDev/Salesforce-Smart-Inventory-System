@@ -5,13 +5,13 @@
             <img src={productImage} alt="Product Image" class="Image"/>
             <template if:false={expanded}>
                 <div class="DescriptionContainer">
-                    <p class="Description" data-id="description"><strong>Description:</strong> <br> <i>{productDescription}</i></p>
+                    <p class="Description"><strong>Description:</strong> <br> <i>{productDescription}</i></p>
                     <lightning-button variant="base" label="more..." onclick={expandDescription} class="ExpandBtn"></lightning-button>
                 </div>
             </template>
             <template if:true={expanded}>
                 <div class="DescriptionContainer">
-                    <p class="ExpandedDescription" data-id="description"><strong>Description:</strong> <br> <i>{productDescription}</i></p>
+                    <p class="ExpandedDescription"><strong>Description:</strong> <br> <i>{productDescription}</i></p>
                     <lightning-button variant="base" label="less..." onclick={expandDescription} class="ExpandBtn"></lightning-button>
                 </div>
             </template>
