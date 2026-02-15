@@ -30,12 +30,15 @@
 }
 
 .ExpandedDescription {
-    margin-top: 1rem;
-    padding-left: 1rem;
     max-width: 100%;
     cursor: pointer;
 }
 
 .ExpandBtn {
     margin-left: 1rem;
+}
+
+.CostPrice {
+    margin-top: 0.2rem;
+    padding-left: 1rem;
 }
