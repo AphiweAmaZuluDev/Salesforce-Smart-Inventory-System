@@ -1,9 +1,20 @@
 <template>
-    <lightning-card title="Product Card">
-        <div>
-            <p class="slds-text-heading_small">Name: {productName}</p>
-            <p class="slds-text-heading_small">Price: {productPrice}</p>
-            <p class="slds-text-heading_small">Description: {productDescription}</p>
+    <lightning-card title={productName}>
+
+        <div class="OuterContainer">
+            <img src={productImage} alt="Product Image">
         </div>
+        <!-- <div>
+            <p class="slds-text-heading_small">Name: {productName}</p>
+            <p class="slds-text-heading_small">Stock Level: {productStockLevel}</p>
+            <p class="slds-text-heading_small">Description: {productDescription}</p>
+            <p class="slds-text-heading_small">Cost Price: R{productCostPrice} per unit</p>
+            <p class="slds-text-heading_small">Supplier: {productSupplier}</p>
+            <p class="slds-text-heading_small">Category: {productCategory}</p>
+            <span>
+                <p>Product Image:</p>
+                <img src={productImage} alt="Product Image" width="25px"/>
+            </span>
+        </div> -->
     </lightning-card>
 </template>

@@ -1,3 +1,7 @@
-.bgLightBlue {
-    --slds-c-card-color-background: lightblue;
+.OuterContainer {
+    height: 22rem;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 0 12px 0.25px lightgrey;
 }

@@ -1,21 +1,25 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, wire, track } from 'lwc';
+import retrieveProducts from '@salesforce/apex/ProductController.retrieveProducts';
 
 export default class ProductGallery extends LightningElement {
-    products = [
-        {
-        Name:"Blue Shirt",
-        Price: 100,
-        Description: "This is a blue shirt"
-        }, 
-        {
-        Name:"Red Shirt",
-        Price: 100,
-        Description: "This is a red shirt"
-        }, 
-        {
-        Name:"Green Shirt",
-        Price: 100,
-        Description: "This is a green shirt"
-        },
-    ] 
+    @track products = []
+    error
+
+    @wire(retrieveProducts)
+    wiredProducts({error, data}) {
+        if(data) {
+            this.products = data.map(product => {
+                return {
+                    ...product,
+                    Supplier_Name: product.Primary_Supplier__r ? product.Primary_Supplier__r.Name : 'No Supplier',
+                }
+            })
+            this.error = undefined
+        } else if (error) {
+            this.error = error
+            this.products = undefined
+            console.log(this.error)
+        }
+    }
+
 }
