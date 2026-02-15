@@ -5,17 +5,21 @@
             <img src={productImage} alt="Product Image" class="Image"/>
             <template if:false={expanded}>
                 <div class="DescriptionContainer">
-                    <p class="Description" data-id="description">Description: <i>{productDescription}</i></p>
+                    <p class="Description" data-id="description"><strong>Description:</strong> <br> <i>{productDescription}</i></p>
                     <lightning-button variant="base" label="more..." onclick={expandDescription} class="ExpandBtn"></lightning-button>
                 </div>
             </template>
             <template if:true={expanded}>
                 <div class="DescriptionContainer">
-                    <p class="ExpandedDescription" data-id="description">Description: <i>{productDescription}</i></p>
+                    <p class="ExpandedDescription" data-id="description"><strong>Description:</strong> <br> <i>{productDescription}</i></p>
                     <lightning-button variant="base" label="less..." onclick={expandDescription} class="ExpandBtn"></lightning-button>
                 </div>
             </template>
-            <p class="CostPrice">Cost Price: <strong>R{productCostPrice}</strong> per unit</p>
+            <p class="TextBox"><strong>Category:</strong> {productCategory}</p>
+            <p class="TextBox"><strong>Supplier:</strong> {productSupplier}</p>
+            <p class="TextBox"><strong>Unit Cost:</strong> R{productCostPrice}</p>
+            <p class="TextBox"><strong>Current Stock Level:</strong> {productStockLevel}</p>
+            <lightning-button variant="brand" label="Restock" class="RestockBtn" data-id="restock"></lightning-button>
         </div>
         <!-- <div>
             <p class="slds-text-heading_small">Name: {productName}</p>
