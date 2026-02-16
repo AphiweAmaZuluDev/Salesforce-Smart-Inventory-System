@@ -3,8 +3,9 @@ public with sharing class ProductController {
         
     }
 
+    // Method to retrieve products from the database.
     @AuraEnabled(cacheable=true)
-    public static List<Product2> retrieveProducts(){
+    public static List<Product2> retrieveProducts() {
         try {
             List<Product2> products = [SELECT Id, Name, Current_Stock_Level__c, Cost_Price__c, Product_Image__c, Primary_Supplier__r.Name, Description, Category__c, Minimum_Stock_Level__c FROM Product2 WHERE Category__c = 'Clothing'];
             return products;
@@ -13,6 +14,7 @@ public with sharing class ProductController {
         }
     }
 
+    // Method to Create a purchase order when a Restock is Requested.
     @AuraEnabled    
     public static void createSinglePO(String productId, Integer quantity) {
         // Validate Inputs
@@ -58,4 +60,9 @@ public with sharing class ProductController {
         }
     }
     
+    // Method used to Search for products using the barcode in QuickAdjust Aura Component.
+    public static Product2 searchUsingBarcode(String barcodeID) {
+        product2 product = [SELECT Id, Name, Current_Stock_Level__c, Cost_Price__c, Barcode_ID__c FROM Product2 WHERE Barcode_ID__c = :barcodeID LIMIT 1];
+        return product != null ? product : null;
+    }
 }
