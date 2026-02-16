@@ -1,6 +1,6 @@
 import { LightningElement, api, track } from 'lwc';
 import createSinglePO from '@salesforce/apex/ProductController.createSinglePO';
-import ShowToastEvent from 'lightning/platformShowToastEvent';
+import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 
 export default class ProductCard extends LightningElement {
     @api productName

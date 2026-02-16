@@ -46,4 +46,4 @@ Notes:
 - 
 
 -------------
-Git commit: Imported createSinglePO function in productCard.js. Passed product ID to productCard component. 
+Git commit: removed cacheable=true from createSinglePO method in ProductController.cls because the method has DLM operations. Added curly brackets to the ShowToastEvent import in productCard.js file. 

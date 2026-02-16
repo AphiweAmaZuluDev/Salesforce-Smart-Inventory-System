@@ -17,6 +17,7 @@ export default class ProductGallery extends LightningElement {
                 }
             })
             this.error = undefined
+            console.log(data[0])
         } else if (error) {
             this.error = error
             this.products = undefined

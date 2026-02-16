@@ -13,7 +13,7 @@ public with sharing class ProductController {
         }
     }
 
-    @AuraEnabled(cacheable=true)
+    @AuraEnabled    
     public static void createSinglePO(String productId, Integer quantity) {
         // Validate Inputs
         if(productId == null || quantity <= 0) {
@@ -39,6 +39,7 @@ public with sharing class ProductController {
                 Supplier__c = product.Primary_Supplier__c,
                 Status__c = 'Draft'
             );
+            System.debug('Purchase order: ' + po);
             insert po;
 
             // Create Purchase Order Line Item Record.
@@ -49,7 +50,7 @@ public with sharing class ProductController {
                 Unit_Cost__c = product.Cost_Price__c
             );
             insert lineItem;
-            
+
         } catch (DmlException e) {
             throw new AuraHandledException('The following error occured while creating the Purchase Order:' + e.getMessage());            
         } catch (Exception e) {
