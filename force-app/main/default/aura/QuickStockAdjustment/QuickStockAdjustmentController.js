@@ -13,12 +13,7 @@
     },
 
     handleInputChange : function(component, event, helper) {
-        try {
-            const searchTerm = event.getSource().get('v.value')
-            component.set('v.searchTerm', searchTerm)
-        } catch (e) {
-            console.error(e)
-            console.error(e.stack)
-        }
+        const searchTerm = event.getSource().get('v.value')
+        component.set('v.searchTerm', searchTerm)
     }
 })
