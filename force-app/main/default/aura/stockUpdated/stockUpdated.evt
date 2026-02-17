@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Stock Updated">
+    <aura:attribute name="productId" type="Id"/>
+</aura:event>

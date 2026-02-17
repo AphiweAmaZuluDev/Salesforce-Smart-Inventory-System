@@ -1,0 +1,26 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="searchTerm" type="String"/>
+    <aura:attribute name="searchedProduct" type="Product2"/>
+    <aura:attribute name="statusMessage" type="String"/>
+
+    <lightning:card title="Inventory Adjuster">
+        <div>
+            <lightning:input type="text" onchange="{!c.handleInputChange}" label="Enter The Barcode ID to search for the product." placeholder="Type Barcode ID here..."></lightning:input>
+            <br/>
+            <lightning:button variant="brand" label="Scan/Search" title="Scan/Search" onclick="{!c.handleSearch}" />
+        </div>
+        <aura:if isTrue="{!v.searchedProduct != null}">
+            <div>
+                <div>
+                    <p>Product Found: {!v.searchedProduct.Name}</p>
+                    <p>Current Stock Level: {!v.searchedProduct.Current_Stock_Level__c}</p>
+                </div>
+                <span>
+                    <lightning:buttonIcon iconName="utility:dash" variant="container" alternativeText="Settings" title="Subtract Stock" onclick="{!c.handleIncrement}"/>
+                    <lightning:input name="stockAdjustmentQuantity" readonly="true" value="0"/>
+                    <lightning:buttonIcon iconName="utility:add" variant="brand" alternativeText="Settings" title="Add Stock" onclick="{!c.handleDecrement}"/>
+                </span>
+            </div>
+        </aura:if>
+    </lightning:card>
+</aura:component>
