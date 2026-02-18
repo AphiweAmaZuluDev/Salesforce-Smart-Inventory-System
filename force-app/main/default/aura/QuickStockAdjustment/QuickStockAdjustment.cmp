@@ -1,4 +1,4 @@
-<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" controller="ProductController">
     <aura:attribute name="searchTerm" type="String"/>
     <aura:attribute name="searchedProduct" type="Product2"/>
     <aura:attribute name="statusMessage" type="String"/>
@@ -16,9 +16,9 @@
                     <p>Current Stock Level: {!v.searchedProduct.Current_Stock_Level__c}</p>
                 </div>
                 <span>
-                    <lightning:buttonIcon iconName="utility:dash" variant="container" alternativeText="Settings" title="Subtract Stock" onclick="{!c.handleIncrement}"/>
+                    <lightning:buttonIcon iconName="utility:dash" variant="container" alternativeText="Settings" title="Subtract Stock" onclick="{!c.handleDecrement}"/>
                     <lightning:input name="stockAdjustmentQuantity" readonly="true" value="0"/>
-                    <lightning:buttonIcon iconName="utility:add" variant="brand" alternativeText="Settings" title="Add Stock" onclick="{!c.handleDecrement}"/>
+                    <lightning:buttonIcon iconName="utility:add" variant="brand" alternativeText="Settings" title="Add Stock" onclick="{!c.handleIncrement}"/>
                 </span>
             </div>
         </aura:if>

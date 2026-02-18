@@ -1,17 +1,17 @@
 ({
     handleIncrement : function(component, event, helper) {
         const productID = component.get('v.searchedProduct').Id
-        QuickStockAdjustmentHelper.increaseStock(productID)
+        helper.increaseStock(component, productID)
     },
 
      handleDecrement : function(component, event, helper) {
         const productID = component.get('v.searchedProduct').Id
-        QuickStockAdjustmentHelper.decreaseStock(productID)
+        helper.decreaseStock(component, productID)
     },
 
     handleSearch : function(component, event, helper) {
         const searchTerm = component.get('v.searchTerm')
-        QuickStockAdjustmentHelper.fetchProduct(searchTerm)
+        helper.fetchProduct(component, searchTerm)
     },
 
     handleInputChange : function(component, event, helper) {

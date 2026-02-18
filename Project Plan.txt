@@ -46,4 +46,4 @@ Notes:
 - 
 
 -------------
-Git commit: 
+Git commit: Defined ProductController in aura component markup. Added AuraEnabled tags to updateInventory and searchUsingBarcode apex methods. Corrected SOQL query in updateInventory apex method. Added Barcode_ID__c field to be retrieved by SOQL query in retrieveProducts method of ProductController.cls. Corrected aura syntax for calling aura helper methods. Encapsulated logic in searchUsingBarcode apex method in try/catch block allowing it to fail gracefully.

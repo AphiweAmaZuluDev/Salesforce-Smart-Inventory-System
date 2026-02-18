@@ -7,7 +7,7 @@ public with sharing class ProductController {
     @AuraEnabled(cacheable=true)
     public static List<Product2> retrieveProducts() {
         try {
-            List<Product2> products = [SELECT Id, Name, Current_Stock_Level__c, Cost_Price__c, Product_Image__c, Primary_Supplier__r.Name, Description, Category__c, Minimum_Stock_Level__c FROM Product2 WHERE Category__c = 'Clothing'];
+            List<Product2> products = [SELECT Id, Name, Current_Stock_Level__c, Cost_Price__c, Product_Image__c, Primary_Supplier__r.Name, Description, Category__c, Minimum_Stock_Level__c, Barcode_ID__c FROM Product2 WHERE Category__c = 'Clothing'];
             return products;
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
@@ -61,14 +61,21 @@ public with sharing class ProductController {
     }
     
     // Method used to Search for products using the barcode in QuickAdjust Aura Component.
+    @AuraEnabled
     public static Product2 searchUsingBarcode(String barcodeID) {
-        product2 product = [SELECT Id, Name, Current_Stock_Level__c, Cost_Price__c, Barcode_ID__c FROM Product2 WHERE Barcode_ID__c = :barcodeID LIMIT 1];
-        return product != null ? product : null;
+        try{
+            product2 product = [SELECT Id, Name, Current_Stock_Level__c, Cost_Price__c, Barcode_ID__c FROM Product2 WHERE Barcode_ID__c = :barcodeID LIMIT 1];
+            return product != null ? product : null;
+        } catch(Exception e) {
+            throw new AuraHandledException('Product not found. Error: ' + e);
+        }
+        
     }
 
     // Method used to update the stock level of a product.
+    @AuraEnabled
     public static void updateInventory(String productId, Integer adjustmentAmount) {
-        product2 product = [SELECT Id, Name, Current_Stock_Level__c, Cost_Price__c, Barcode_ID__c FROM Product2 WHERE Barcode_ID__c = :barcodeID LIMIT 1];
+        product2 product = [SELECT Id, Name, Current_Stock_Level__c, Cost_Price__c, Barcode_ID__c FROM Product2 WHERE Id = :productId LIMIT 1];
 
         if(product != null) {
             product.Current_Stock_Level__c += adjustmentAmount;
