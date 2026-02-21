@@ -2,7 +2,7 @@
     <aura:attribute name="searchTerm" type="String"/>
     <aura:attribute name="searchedProduct" type="Product2"/>
     <aura:attribute name="statusMessage" type="String"/>
-    <aura:attribute name="valueToIncrement" type="Integer" default="0"/>
+    <aura:attribute name="valueToAdjustBy" type="Integer" default="0"/>
 
     <lightning:card title="Inventory Adjuster">
         <div>
@@ -19,7 +19,7 @@
                 </div>
                 <span class="adjustmentContainer">
                     <lightning:buttonIcon iconName="utility:dash" alternativeText="Settings" title="Subtract Stock" onclick="{!c.handleDecrement}"/>
-                    <span class="valueToIncrement">{!v.valueToIncrement}</span>
+                    <span class="valueToAdjustBy">{!v.valueToAdjustBy}</span>
                     <lightning:buttonIcon iconName="utility:add" variant="brand" alternativeText="Settings" title="Add Stock" onclick="{!c.handleIncrement}"/>
                 </span>
             </div>
