@@ -64,7 +64,7 @@ public with sharing class ProductController {
     @AuraEnabled
     public static Product2 searchUsingBarcode(String barcodeID) {
         try{
-            product2 product = [SELECT Id, Name, Current_Stock_Level__c, Cost_Price__c, Barcode_ID__c FROM Product2 WHERE Barcode_ID__c = :barcodeID LIMIT 1];
+            product2 product = [SELECT Id, Name, Current_Stock_Level__c, Cost_Price__c, Barcode_ID__c, Product_Image__c FROM Product2 WHERE Barcode_ID__c = :barcodeID LIMIT 1];
             return product != null ? product : null;
         } catch(Exception e) {
             throw new AuraHandledException('Product not found. Error: ' + e);

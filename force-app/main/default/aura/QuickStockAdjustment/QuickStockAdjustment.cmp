@@ -2,6 +2,7 @@
     <aura:attribute name="searchTerm" type="String"/>
     <aura:attribute name="searchedProduct" type="Product2"/>
     <aura:attribute name="statusMessage" type="String"/>
+    <aura:attribute name="valueToIncrement" type="Integer" default="0"/>
 
     <lightning:card title="Inventory Adjuster">
         <div>
@@ -11,13 +12,14 @@
         </div>
         <aura:if isTrue="{!v.searchedProduct != null}">
             <div>
-                <div>
-                    <p>Product Found: {!v.searchedProduct.Name}</p>
-                    <p>Current Stock Level: {!v.searchedProduct.Current_Stock_Level__c}</p>
+                <div class="productInfo">
+                    <img src="{!v.searchedProduct.Product_Image__c}" alt="Product Image" class="image"/>
+                    <p><strong>Product: </strong> {!v.searchedProduct.Name}</p>
+                    <p><strong>Current Stock Level: </strong> {!v.searchedProduct.Current_Stock_Level__c}</p>
                 </div>
-                <span>
-                    <lightning:buttonIcon iconName="utility:dash" variant="container" alternativeText="Settings" title="Subtract Stock" onclick="{!c.handleDecrement}"/>
-                    <lightning:input name="stockAdjustmentQuantity" readonly="true" value="0"/>
+                <span class="adjustmentContainer">
+                    <lightning:buttonIcon iconName="utility:dash" alternativeText="Settings" title="Subtract Stock" onclick="{!c.handleDecrement}"/>
+                    <span class="valueToIncrement">{!v.valueToIncrement}</span>
                     <lightning:buttonIcon iconName="utility:add" variant="brand" alternativeText="Settings" title="Add Stock" onclick="{!c.handleIncrement}"/>
                 </span>
             </div>
