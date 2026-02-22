@@ -55,11 +55,13 @@ public with sharing class InventoryCheckBatch implements Database.Batchable<SObj
                     Unit_Cost__c = product.Cost_Price__c
                 );
                 lineItemsToInsert.add(lineItem);
-            }
+            } 
             
             if(!lineItemsToInsert.isEmpty()) {
                 insert lineItemsToInsert;
             }
+        } else {
+            System.debug('All products have sufficient stock. No purchase orders created.');
         }
     }
 
