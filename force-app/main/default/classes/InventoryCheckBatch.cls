@@ -38,12 +38,12 @@ public with sharing class InventoryCheckBatch implements Database.Batchable<SObj
 
         // Create Purchase Order Line Items.
         if(!productToPOMap.isEmpty()) {
-            insert productToPOMap;
+            insert productToPOMap.values();
 
             // Increment number of successful purchase orders created.
             totalPOsCreated += productToPOMap.size();
 
-            List<Purchase_Order_Line_Items__c> lineItemsToInsert = new List<Purchase_Order_Line_Items__c>();
+            List<Purchase_Order_Line_Item__c> lineItemsToInsert = new List<Purchase_Order_Line_Item__c>();
 
             for(Product2 product : productToPOMap.keySet()) {
                 Purchase_Order__c insertedPO = productToPOMap.get(product);
@@ -54,7 +54,7 @@ public with sharing class InventoryCheckBatch implements Database.Batchable<SObj
                     Quantity__c = defaultQuantityToAdd,
                     Unit_Cost__c = product.Cost_Price__c
                 );
-                lineItemsToInsert.add();
+                lineItemsToInsert.add(lineItem);
             }
             
             if(!lineItemsToInsert.isEmpty()) {
