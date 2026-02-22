@@ -12,6 +12,7 @@ export default class ProductCard extends LightningElement {
     @api productCategory
     @api productMinimumStockLevel
     @api productId
+    @api productBarcodeId
 
     @track expanded = false
 

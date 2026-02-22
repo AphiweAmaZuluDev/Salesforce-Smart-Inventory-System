@@ -21,5 +21,12 @@
     handleInputChange : function(component, event, helper) {
         const searchTerm = event.getSource().get('v.value')
         component.set('v.searchTerm', searchTerm)
+    },
+
+    adjustStock: function(component, event, helper) {
+        const productID = component.get('v.searchedProduct').Id
+        const adjustmentAmount = component.get('v.valueToAdjustBy')
+        helper.applyChanges(component, productID, adjustmentAmount)
+        component.set('v.valueToAdjustBy', 0)
     }
 })

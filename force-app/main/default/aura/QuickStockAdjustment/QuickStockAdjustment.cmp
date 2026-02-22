@@ -1,8 +1,8 @@
 <aura:component implements="flexipage:availableForAllPageTypes" access="global" controller="ProductController">
     <aura:attribute name="searchTerm" type="String"/>
     <aura:attribute name="searchedProduct" type="Product2"/>
-    <aura:attribute name="statusMessage" type="String"/>
     <aura:attribute name="valueToAdjustBy" type="Integer" default="0"/>
+    <lightning:messageChannel type="Inventory_Update__c" aura:id="inventoryChannel" scope="APPLICATION"/>
 
     <lightning:card title="Inventory Adjuster">
         <div>
@@ -11,7 +11,7 @@
             <lightning:button variant="brand" label="Scan/Search" title="Scan/Search" onclick="{!c.handleSearch}" />
         </div>
         <aura:if isTrue="{!v.searchedProduct != null}">
-            <div>
+            <div class="adjustmentForm">
                 <div class="productInfo">
                     <img src="{!v.searchedProduct.Product_Image__c}" alt="Product Image" class="image"/>
                     <p><strong>Product: </strong> {!v.searchedProduct.Name}</p>
@@ -22,6 +22,7 @@
                     <span class="valueToAdjustBy">{!v.valueToAdjustBy}</span>
                     <lightning:buttonIcon iconName="utility:add" variant="brand" alternativeText="Settings" title="Add Stock" onclick="{!c.handleIncrement}"/>
                 </span>
+                <lightning:button variant="brand" label="Adjust Stock" title="Update Stock" onclick="{!c.adjustStock}" />
             </div>
         </aura:if>
     </lightning:card>

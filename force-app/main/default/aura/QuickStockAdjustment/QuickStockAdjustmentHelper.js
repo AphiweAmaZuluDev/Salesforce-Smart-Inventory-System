@@ -20,11 +20,25 @@
         $A.enqueueAction(action)
     },
     
-    increaseStock : function(component, adjustmentValue) {
+    applyChanges: function(component, productID, adjustmentAmount) {
+        const action = component.get('c.updateInventory')
         
-    },
+        action.setParams({
+            productId: productID,
+            adjustmentAmount: adjustmentAmount
+        })
 
-    decreaseStock : function(component, adjustmentValue) {
-        
+        action.setCallback(this, (response) => {
+            const state = response.getState()
+            if(state ==="SUCCESS") {
+                component.find('inventoryChannel').publish()
+                const productStock = component.get('v.searchedProduct').Current_Stock_Level__c
+                component.set('v.searchedProduct.Current_Stock_Level__c', productStock + adjustmentAmount)
+            } else {
+                console.error('Failed to update inventory. Failed with status: ' + state)
+            }
+        })
+
+        $A.enqueueAction(action)
     }
 })
