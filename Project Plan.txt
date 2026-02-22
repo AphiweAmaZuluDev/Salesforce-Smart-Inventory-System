@@ -46,4 +46,4 @@ Notes:
 - 
 
 -------------
-Git commit: added "Adjust Stock" Lightning button. Added "adjustStock" controller method to be triggered when button is clicked. Replaced aura application event with Lightning Message Channel. Added barcode ID to product card. Removed console log used to debug in productGallery.js.
+Git commit: 

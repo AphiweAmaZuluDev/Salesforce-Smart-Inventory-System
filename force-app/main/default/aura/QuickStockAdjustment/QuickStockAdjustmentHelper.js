@@ -34,8 +34,21 @@
                 component.find('inventoryChannel').publish()
                 const productStock = component.get('v.searchedProduct').Current_Stock_Level__c
                 component.set('v.searchedProduct.Current_Stock_Level__c', productStock + adjustmentAmount)
+                const toastEvent = $A.get('e.force:showToast')
+                toastEvent.setParams({
+                    title: 'Success',
+                    message: 'Stock Adjusted',
+                    type: 'success'
+                })
+                toastEvent.fire()
             } else {
-                console.error('Failed to update inventory. Failed with status: ' + state)
+                const toastEvent = $A.get('e.force:showToast')
+                toastEvent.setParams({
+                    title: 'Error',
+                    message: 'Stock Adjustment Failed',
+                    type: 'error'
+                })
+                toastEvent.fire()
             }
         })
 
