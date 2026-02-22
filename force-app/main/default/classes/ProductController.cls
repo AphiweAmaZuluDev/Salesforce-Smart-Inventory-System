@@ -41,7 +41,6 @@ public with sharing class ProductController {
                 Supplier__c = product.Primary_Supplier__c,
                 Status__c = 'Draft'
             );
-            System.debug('Purchase order: ' + po);
             insert po;
 
             // Create Purchase Order Line Item Record.
