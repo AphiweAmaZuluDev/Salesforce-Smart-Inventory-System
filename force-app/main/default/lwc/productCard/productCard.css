@@ -6,6 +6,13 @@
     box-shadow: 0 0 12px 0.25px lightgrey;
 }
 
+.ImageContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .Image {
     border-radius: 2rem;
     height: 18rem;

@@ -1,3 +1,61 @@
-<apex:page standardController="Purchase_Order__c" renderAs="pdf">
-    
+<apex:page standardController="Purchase_Order__c" renderAs="pdf" showHeader="false" applyBodyTag="false">
+    <head>
+        <style>
+            body {
+                font-family: sans-serif;
+                color: #333;
+            }
+            .invoice-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 4rem;
+            }
+            .invoice-table th, .invoice-table td { 
+                border: 1px solid #000; 
+                padding: 2rem; 
+                text-align: left; 
+            }
+            .invoice-table th { 
+                background-color: #f2f2f2; 
+                font-weight: bold;
+            }
+            .text-right { 
+                text-align: right; 
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Purchase Order Number: {!Purchase_Order__c.Name}</h1>
+        <p><strong>Supplier Name: </strong> {!Purchase_Order__c.Supplier__r.Name}</p>
+
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Cost</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <apex:repeat value="{!Purchase_Order__c.Purchase_Order_Line_Items__r}" var="lineItem">
+                    <tr>
+                        <td>{!lineItem.Product__r.Name}</td>
+                        <td>{!lineItem.Quantity__c}</td>
+                        
+                        <td>
+                            <apex:outputField value="{!lineItem.Unit_Cost__c}"/>
+                        </td>
+                        <td>
+                            <apex:outputField value="{!lineItem.Total_Price__c}"/>
+                        </td>
+                    </tr>
+                </apex:repeat>
+            </tbody>
+        </table>
+        <h3 class="text-right">
+            Grand Total: 
+            <apex:outputField value="{!Purchase_Order__c.Total_Amount__c}"/>
+        </h3>
+    </body>
 </apex:page>

@@ -2,7 +2,9 @@
     <lightning-card title={productName}>
 
         <div class="OuterContainer">
-            <img src={productImage} alt="Product Image" class="Image"/>
+            <div class="ImageContainer">
+                <img src={productImage} alt="Product Image" class="Image"/>
+            </div>
             <template if:false={expanded}>
                 <div class="DescriptionContainer">
                     <p class="Description"><strong>Description:</strong> <br> <i>{productDescription}</i></p>
