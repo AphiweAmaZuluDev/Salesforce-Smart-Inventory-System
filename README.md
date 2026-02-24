@@ -123,13 +123,25 @@ To ensure system reliability and seamless deployments, the application is backed
 * **Positive & Negative Testing**: Controllers and Triggers are tested against expected inputs as well as intentional failures (e.g., missing suppliers, invalid stock adjustments) to guarantee error-handling logic functions correctly for the end-user.
 
 ### **Code Coverage Results**
-The project exceeds the Salesforce mandatory 75% deployment threshold across its backend logic.
+The project comfortably exceeds the Salesforce mandatory 75% deployment threshold across its backend logic, ensuring robust, production-ready code.
 
-| Apex Class | Type | Coverage | Lines Covered |
-| :--- | :--- | :--- | :--- |
-| `InventoryCheckBatch` | Batch Class | 97% | 48 / 49 |
-| `ProductTrigger` | Apex Trigger | 100% | 3 / 3 |
-| `ProductTriggerHandler` | Trigger Handler | 75% | 3 / 4 |
-| `ProductController` | UI Controller | 85%+ | (Varies by environment) |
+| Apex Class | Type | Coverage | 
+| :--- | :--- | :--- | 
+| `InventoryCheckBatch` | Batch Class | 97% | 
+| `ProductTrigger` | Apex Trigger | 100% | 
+| `ProductTriggerHandler` | Trigger Handler | 100% | 
+| `ProductController` | UI Controller | 80% | 
 
-![Screenshot: Salesforce Developer Console showing high code coverage percentages](InventorySystem-Code-Coverage.png)
+### **Coverage Evidence**
+
+**InventoryCheckBatch Test Results:**
+![Screenshot: InventoryCheckBatch showing 97% code coverage](InventorySystem-InventoryCheckBatch-Test-Code-Coverage.png)
+
+**ProductTrigger Test Results:**
+![Screenshot: ProductTrigger showing 100% code coverage](InventorySystem-ProductTrigger-Test-Code-Coverage.png)
+
+**ProductTriggerHandler Test Results:**
+![Screenshot: ProductTriggerHandler showing 100% code coverage](InventorySystem-ProductTriggerHandler-Test-Code-Coverage.png)
+
+**ProductController Test Results:**
+![Screenshot: ProductController showing 80% code coverage](InventorySystem-ProductController-Test-Code-Coverage.png)
