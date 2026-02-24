@@ -3,7 +3,7 @@
         <div class="slds-p-around_medium">
             <lightning-layout multiple-rows="true">
                 <template for:each={products} for:item="product">
-                    <lightning-layout-item key={product.Id} size="12" small-device-size="12" medium-device-size="9" large-device-size="6" padding="around-small">
+                    <lightning-layout-item key={product.Id} size="12" small-device-size="9" medium-device-size="6" large-device-size="3" padding="around-small">
                         <c-product-card 
                         product-name={product.Name}
                         product-stock-level={product.Current_Stock_Level__c}
