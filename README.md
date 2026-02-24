@@ -1,7 +1,7 @@
 # **Project Documentation: Inventory Management & PO Generation System**
 
 **Version:** 1.0  
-**Author:** [Your Name]  
+**Author:** Aphiwe Zulu 
 **Date:** February 24, 2026  
 
 ## **1. Executive Summary**
