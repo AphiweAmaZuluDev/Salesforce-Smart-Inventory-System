@@ -74,10 +74,10 @@ public with sharing class ProductController {
     // Method used to update the stock level of a product.
     @AuraEnabled
     public static void updateInventory(String productId, Integer adjustmentAmount) {
-        product2 product = [SELECT Id, Name, Current_Stock_Level__c, Cost_Price__c, Barcode_ID__c FROM Product2 WHERE Id = :productId LIMIT 1];
+        List<product2> product = [SELECT Id, Name, Current_Stock_Level__c, Cost_Price__c, Barcode_ID__c FROM Product2 WHERE Id = :productId LIMIT 1];
 
-        if(product != null) {
-            product.Current_Stock_Level__c += adjustmentAmount;
+        if(!product.isEmpty()) {
+            product[0].Current_Stock_Level__c += adjustmentAmount;
             update product;
         } else {
             throw new AuraHandledException('Product not found');

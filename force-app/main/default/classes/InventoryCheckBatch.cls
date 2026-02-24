@@ -9,7 +9,7 @@ public with sharing class InventoryCheckBatch implements Database.Batchable<SObj
     public List<String> productsMissingSupplier = new List<String>();
 
     public Database.QueryLocator start(Database.BatchableContext context) {
-        String query = 'SELECT Id, Name, Current_Stock_Level__c, Minimum_Stock_Level__c, Category__c, Primary_Supplier__c, Cost_Price__c FROM Product2 WHERE isActive = true AND Category__c = \'Clothing\'';
+        String query = 'SELECT Id, Name, Current_Stock_Level__c, Minimum_Stock_Level__c, Category__c, Primary_Supplier__c, Cost_Price__c FROM Product2 WHERE isActive = true AND Category__c = \'Clothing\' AND Current_Stock_Level__c < Minimum_Stock_Level__c';
         return Database.getQueryLocator(query);
     }
 
