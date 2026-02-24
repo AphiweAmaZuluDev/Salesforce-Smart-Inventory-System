@@ -113,3 +113,23 @@ To deploy this project to a new environment, follow these steps:
 2. **Assign Permissions:** Ensure users have the appropriate CRUD and FLS permissions, plus the "Prompt Template User" permission set for AI features.
 3. **Schedule Batch:** Go to **Setup** -> **Apex Classes** -> **Schedule Apex** and schedule `InventoryCheckBatch` to run daily at 12:00 AM.
 4. **Configure Utility Bar:** Add the `QuickStockAdjust` component to the App's Utility Bar via the App Manager.
+
+## **6. Testing & Quality Assurance**
+
+To ensure system reliability and seamless deployments, the application is backed by a robust suite of Apex test classes. The testing architecture adheres to Salesforce best practices, prioritizing both positive "happy path" execution and negative error-handling scenarios.
+
+### **Testing Architecture**
+* **`TestDataFactory.cls`**: A centralized utility class used to efficiently generate standard mock data (Products, Suppliers) across all test classes, reducing code duplication and ensuring consistent testing environments.
+* **Positive & Negative Testing**: Controllers and Triggers are tested against expected inputs as well as intentional failures (e.g., missing suppliers, invalid stock adjustments) to guarantee error-handling logic functions correctly for the end-user.
+
+### **Code Coverage Results**
+The project exceeds the Salesforce mandatory 75% deployment threshold across its backend logic.
+
+| Apex Class | Type | Coverage | Lines Covered |
+| :--- | :--- | :--- | :--- |
+| `InventoryCheckBatch` | Batch Class | 97% | 48 / 49 |
+| `ProductTrigger` | Apex Trigger | 100% | 3 / 3 |
+| `ProductTriggerHandler` | Trigger Handler | 75% | 3 / 4 |
+| `ProductController` | UI Controller | 85%+ | (Varies by environment) |
+
+![Screenshot: Salesforce Developer Console showing high code coverage percentages](InventorySystem-Code-Coverage.png)

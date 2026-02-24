@@ -9,7 +9,7 @@ public with sharing class InventoryCheckBatch implements Database.Batchable<SObj
     public List<String> productsMissingSupplier = new List<String>();
 
     public Database.QueryLocator start(Database.BatchableContext context) {
-        String query = 'SELECT Id, Name, Current_Stock_Level__c, Minimum_Stock_Level__c, Category__c, Primary_Supplier__c, Cost_Price__c FROM Product2 WHERE isActive = true AND Category__c = \'Clothing\' AND Current_Stock_Level__c < Minimum_Stock_Level__c';
+        String query = 'SELECT Id, Name, Current_Stock_Level__c, Minimum_Stock_Level__c, Category__c, Primary_Supplier__c, Cost_Price__c FROM Product2 WHERE isActive = true AND Category__c = \'Clothing\'';
         return Database.getQueryLocator(query);
     }
 
@@ -22,17 +22,19 @@ public with sharing class InventoryCheckBatch implements Database.Batchable<SObj
         // Create purchase orders
         for(Product2 product : scope) {
 
-            totalProductsEvaluated++;
-            if(product.Primary_Supplier__c != null) {
-                Purchase_Order__c po = new Purchase_Order__c(
-                    Supplier__c = product.Primary_Supplier__c,
-                    Status__c = 'Draft'
-                );
-                productToPOMap.put(product, po);
-            } else {
-                productsMissingSupplier.add(product.Name);
-                System.debug(LoggingLevel.ERROR,'This product does not have a supplier: ' + product.Name);
-            }
+           if(product.Current_Stock_Level__c < product.Minimum_Stock_Level__c) {
+                totalProductsEvaluated++;
+                if(product.Primary_Supplier__c != null) {
+                    Purchase_Order__c po = new Purchase_Order__c(
+                        Supplier__c = product.Primary_Supplier__c,
+                        Status__c = 'Draft'
+                    );
+                    productToPOMap.put(product, po);
+                } else {
+                    productsMissingSupplier.add(product.Name);
+                    System.debug(LoggingLevel.ERROR,'This product does not have a supplier: ' + product.Name);
+                }
+           }
         }
         
 
